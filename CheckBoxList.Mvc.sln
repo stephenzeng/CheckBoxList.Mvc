@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBoxList.Mvc", "CheckBoxList.Mvc\CheckBoxList.Mvc.csproj", "{2DCBD640-3C98-44C5-AECC-A613B2658E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBoxList.Mvc.Demo", "CheckBoxList.Mvc.Demo\CheckBoxList.Mvc.Demo.csproj", "{A52F28ED-D605-415A-B966-3AFDCD39772B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DCBD640-3C98-44C5-AECC-A613B2658E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCBD640-3C98-44C5-AECC-A613B2658E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCBD640-3C98-44C5-AECC-A613B2658E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCBD640-3C98-44C5-AECC-A613B2658E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52F28ED-D605-415A-B966-3AFDCD39772B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52F28ED-D605-415A-B966-3AFDCD39772B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52F28ED-D605-415A-B966-3AFDCD39772B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52F28ED-D605-415A-B966-3AFDCD39772B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
