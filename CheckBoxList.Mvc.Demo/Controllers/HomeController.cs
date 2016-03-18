@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using CheckBoxList.Mvc.Common;
 using CheckBoxList.Mvc.Demo.Models;
 
 namespace CheckBoxList.Mvc.Demo.Controllers
@@ -11,7 +12,7 @@ namespace CheckBoxList.Mvc.Demo.Controllers
             return View();
         }
 
-        public ActionResult Demo1()
+        public ActionResult Example1()
         {
             var viewModel = new InvestmentViewModel();
             viewModel.InvestmentOptions.Last().IsChecked = true;
@@ -20,7 +21,7 @@ namespace CheckBoxList.Mvc.Demo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Demo1(InvestmentViewModel viewModel)
+        public ActionResult Example1(InvestmentViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -28,6 +29,31 @@ namespace CheckBoxList.Mvc.Demo.Controllers
                     .Where(i => i.IsChecked).Select(i => i.Text);
 
                 ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions);
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult Example2()
+        {
+            var existingHobbies = new[] {Hobby.ScubaDiving, Hobby.Swimming,};
+
+            var viewModel = new HobbyViewModel()
+            {
+                Hobbies = existingHobbies.ToCheckboxListItems().ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Example2(HobbyViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var selectedOptions = viewModel.Hobbies.ToEnumArray<Hobby>();
+
+                ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions.Select(i => i.GetEnumDisplayName()));
             }
 
             return View(viewModel);

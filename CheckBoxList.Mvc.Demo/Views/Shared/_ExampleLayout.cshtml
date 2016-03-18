@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+    <div class="col-md-3">
+        <div style="margin-top: 35px;">
+            <a href="@Url.Action("Index", "Home")" class="list-group-item">Home</a>
+            <a href="@Url.Action("Example1", "Home")" class="list-group-item">Example 1</a>
+            <a href="@Url.Action("Example2", "Home")" class="list-group-item">Example 2</a>
+        </div>
+    </div>
+</div>
