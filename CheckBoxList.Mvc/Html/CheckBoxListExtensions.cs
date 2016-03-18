@@ -9,7 +9,7 @@ using System.Web.Mvc.Html;
 
 namespace CheckBoxList.Mvc.Html
 {
-    public static class CheckBoxListExtensionsTmp
+    public static class CheckBoxListExtensions
     {
         public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, IEnumerable<CheckBoxListItem> checkboxList)
         {
