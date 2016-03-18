@@ -44,7 +44,7 @@ namespace CheckBoxList.Mvc.Common
             });
         }
 
-        public static IEnumerable<T> ToArray<T>(this IEnumerable<CheckBoxListItem> checkboxList) where T : struct, IConvertible
+        public static IEnumerable<T> ToEnumArray<T>(this IEnumerable<CheckBoxListItem> checkboxList) where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
             {

@@ -8,14 +8,19 @@ namespace CheckBoxList.Mvc.Demo.Controllers
     {
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Demo1()
+        {
             var viewModel = new InvestmentViewModel();
-            //viewModel.InvestmentOptions[0]
+            viewModel.InvestmentOptions.Last().IsChecked = true;
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Index(InvestmentViewModel viewModel)
+        public ActionResult Demo1(InvestmentViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

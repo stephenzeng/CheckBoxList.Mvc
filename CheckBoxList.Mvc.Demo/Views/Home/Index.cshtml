@@ -3,25 +3,5 @@
 @model CheckBoxList.Mvc.Demo.Models.InvestmentViewModel
 
 <div style="margin: 25px; padding: 25px; border: 1px solid #ccc; float: left;">
-    @using (Html.BeginForm())
-    {
-        <div class="form-group">
-            @Html.LabelFor(m => m.InvestmentOptions)
-            <div style="margin-top: 15px;">
-                @Html.CheckBoxListFor(m => m.InvestmentOptions)
-            </div>
-        </div>
-
-        <div style="margin-top: 45px;">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-    }
-
-    @if (!string.IsNullOrEmpty(ViewBag.SelectedOptionsText))
-    {
-        <div style="margin-top: 35px; padding-top: 5px; border-top: 1px solid #ccc;">
-            Your have selected:
-            <b>@ViewBag.SelectedOptionsText.</b>
-        </div>
-    }
+    <a href="@Url.Action("Demo1")">Demo 1</a>
 </div>
