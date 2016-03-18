@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckBoxListItem.cs" />
-    <Compile Include="Html\CheckboxListExtensions.cs" />
+    <Compile Include="Html\CheckBoxListExtensionsTmp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

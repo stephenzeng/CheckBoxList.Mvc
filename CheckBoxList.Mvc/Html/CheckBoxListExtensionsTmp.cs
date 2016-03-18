@@ -9,14 +9,36 @@ using System.Web.Mvc.Html;
 
 namespace CheckBoxList.Mvc.Html
 {
-    public static class CheckboxListExtensions
+    public static class CheckBoxListExtensionsTmp
     {
-        public static MvcHtmlString CheckboxList(this HtmlHelper htmlHelper, string name, IEnumerable<CheckBoxListItem> checkboxList)
+        public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, IEnumerable<CheckBoxListItem> checkboxList)
         {
-            return CheckboxListHelper(htmlHelper, null, name, checkboxList, null);
+            return CheckBoxListHelper(htmlHelper, null, name, checkboxList, null);
         }
 
-        public static MvcHtmlString CheckboxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, IEnumerable<CheckBoxListItem> checkboxList, object htmlAttributes)
+        {
+            return CheckBoxListHelper(htmlHelper, null, name, checkboxList, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        }
+
+        public static MvcHtmlString CheckBoxList(this HtmlHelper htmlHelper, string name, IEnumerable<CheckBoxListItem> checkboxList, IDictionary<string, object> htmlAttributes)
+        {
+            return CheckBoxListHelper(htmlHelper, null, name, checkboxList, htmlAttributes);
+        }
+
+        public static MvcHtmlString CheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+            where TProperty : IEnumerable<CheckBoxListItem>
+        {
+            return CheckBoxListFor(htmlHelper, expression, null);
+        }
+
+        public static MvcHtmlString CheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
+            where TProperty : IEnumerable<CheckBoxListItem>
+        {
+            return CheckBoxListFor(htmlHelper, expression, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        }
+
+        public static MvcHtmlString CheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes)
             where TProperty : IEnumerable<CheckBoxListItem>
         {
             if (expression == null)
@@ -28,10 +50,10 @@ namespace CheckBoxList.Mvc.Html
             var func = expression.Compile();
             var checkboxList = func(htmlHelper.ViewData.Model) as IEnumerable<CheckBoxListItem>;
 
-            return CheckboxListHelper(htmlHelper, metadata, name, checkboxList, null);
+            return CheckBoxListHelper(htmlHelper, metadata, name, checkboxList, htmlAttributes);
         }
 
-        private static MvcHtmlString CheckboxListHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string expression,
+        private static MvcHtmlString CheckBoxListHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string expression,
             IEnumerable<CheckBoxListItem> checkboxList, IDictionary<string, object> htmlAttributes)
         {
             return SelectInternal(htmlHelper, metadata, expression, checkboxList, htmlAttributes: htmlAttributes);
@@ -70,7 +92,7 @@ namespace CheckBoxList.Mvc.Html
 
             if (defaultValues != null)
             {
-                checkboxList = GetCheckboxListWithDefaultValue(checkboxList, defaultValues);
+                checkboxList = GetCheckBoxListWithDefaultValue(checkboxList, defaultValues);
             }
 
             var listItemBuilder = BuildItems(htmlHelper, name, checkboxList.ToList());
@@ -121,18 +143,18 @@ namespace CheckBoxList.Mvc.Html
             return null;
         }
 
-        private static IEnumerable<CheckBoxListItem> GetCheckboxListWithDefaultValue(IEnumerable<CheckBoxListItem> checkboxList, IEnumerable<string> defaultValues)
+        private static IEnumerable<CheckBoxListItem> GetCheckBoxListWithDefaultValue(IEnumerable<CheckBoxListItem> checkboxList, IEnumerable<string> defaultValues)
         {
             var selectedValues = new HashSet<string>(defaultValues, StringComparer.OrdinalIgnoreCase);
-            var newCheckboxList = new List<CheckBoxListItem>();
+            var newCheckBoxList = new List<CheckBoxListItem>();
 
             foreach (var item in checkboxList)
             {
                 item.IsChecked = (item.Value != null) ? selectedValues.Contains(item.Value) : selectedValues.Contains(item.Text);
-                newCheckboxList.Add(item);
+                newCheckBoxList.Add(item);
             }
 
-            return newCheckboxList;
+            return newCheckBoxList;
         }
 
         private static StringBuilder BuildItems(this HtmlHelper htmlHelper, string name, IList<CheckBoxListItem> checkboxList)
