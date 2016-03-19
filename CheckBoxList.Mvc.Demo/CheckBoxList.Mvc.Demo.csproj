@@ -116,6 +116,7 @@
     <Content Include="Views\Home\Example1.cshtml" />
     <Content Include="Views\Home\Example2.cshtml" />
     <Content Include="Views\Shared\_ExampleLayout.cshtml" />
+    <Content Include="Views\Home\Example3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

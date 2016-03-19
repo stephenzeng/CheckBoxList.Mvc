@@ -8,6 +8,8 @@ namespace CheckBoxList.Mvc.Demo.Models
     {
         [Display(Name = "What hobbies do you have in your spare time?")]
         public IList<CheckBoxListItem> Hobbies { get; set; }
+
+        public IList<Hobby> MyHobbies { get; set; } 
     }
 
     public enum Hobby

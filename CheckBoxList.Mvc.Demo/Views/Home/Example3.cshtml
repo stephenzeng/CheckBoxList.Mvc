@@ -1,0 +1,33 @@
+﻿@using System.Web.Mvc.Html
+@using CheckBoxList.Mvc.Html
+@model CheckBoxList.Mvc.Demo.Models.HobbyViewModel
+
+@{
+    Layout = "~/Views/Shared/_ExampleLayout.cshtml";
+}
+
+<h3 class="page-header">
+    <b>Example 3</b>
+</h3>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MyHobbies)
+        <div style="margin-top: 15px;">
+            @Html.EnumCheckBoxListFor(m => m.MyHobbies)
+        </div>
+    </div>
+
+    <div style="margin: 35px 0;">
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SelectedOptionsText))
+{
+    <div class="alert alert-info">
+        Your have selected:
+        <b>@ViewBag.SelectedOptionsText.</b>
+    </div>
+}

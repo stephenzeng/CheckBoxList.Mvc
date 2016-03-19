@@ -58,5 +58,28 @@ namespace CheckBoxList.Mvc.Demo.Controllers
 
             return View(viewModel);
         }
+
+        public ActionResult Example3()
+        {
+            var viewModel = new HobbyViewModel()
+            {
+                MyHobbies = new [] { Hobby.Reading, }.ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Example3(HobbyViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var selectedOptions = viewModel.MyHobbies;
+
+                ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions.Select(i => i.GetEnumDisplayName()));
+            }
+
+            return View(viewModel);
+        }
     }
 }
