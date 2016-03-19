@@ -1,21 +1,21 @@
 ﻿@using System.Web.Mvc.Html
 @using CheckBoxList.Mvc.Html
-@model CheckBoxList.Mvc.Demo.Models.HobbyViewModel
+@model CheckBoxList.Mvc.Demo.Models.ExtremeSportViewModel
 
 @{
     Layout = "~/Views/Shared/_ExampleLayout.cshtml";
 }
 
 <h3 class="page-header">
-    <b>Example 2</b>
+    <b>Example - @Html.Encode("@Html.EnumCheckBoxListFor()")</b>
 </h3>
 
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Hobbies)
+        @Html.LabelFor(m => m.ExtremeSports)
         <div style="margin-top: 15px;">
-            @Html.CheckBoxListFor(m => m.Hobbies)
+            @Html.EnumCheckBoxListFor(m => m.ExtremeSports)
         </div>
     </div>
 
@@ -27,7 +27,7 @@
 @if (!string.IsNullOrEmpty(ViewBag.SelectedOptionsText))
 {
     <div class="alert alert-info">
-        Your have selected:
+        Cool man! Your have selected:
         <b>@ViewBag.SelectedOptionsText.</b>
     </div>
 }

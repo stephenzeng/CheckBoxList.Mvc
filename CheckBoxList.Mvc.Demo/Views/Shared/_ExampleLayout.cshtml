@@ -8,9 +8,21 @@
     </div>
     <div class="col-md-3">
         <div style="margin-top: 35px;">
-            <a href="@Url.Action("Index", "Home")" class="list-group-item">Home</a>
-            <a href="@Url.Action("Example1", "Home")" class="list-group-item">Example 1</a>
-            <a href="@Url.Action("Example2", "Home")" class="list-group-item">Example 2</a>
+            <a href="@Url.Action("Index", "Home")" class="list-group-item">
+                Home
+            </a>
+            <a href="@Url.Action("ExampleCheckBoxList")" class="list-group-item">
+                Example - @Html.Encode("@Html.CheckBoxList()")
+            </a>
+            <a href="@Url.Action("ExampleCheckBoxListFor")" class="list-group-item">
+                Example - @Html.Encode("@Html.CheckBoxListFor()")
+            </a>
+            <a href="@Url.Action("ExampleEnumCheckBoxList")" class="list-group-item">
+                Example - @Html.Encode("@Html.EnumCheckBoxList()")
+            </a>
+            <a href="@Url.Action("ExampleEnumCheckBoxListFor")" class="list-group-item">
+                Example - @Html.Encode("@Html.EnumCheckBoxListFor()")
+            </a>
         </div>
     </div>
 </div>

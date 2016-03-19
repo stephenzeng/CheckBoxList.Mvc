@@ -1,11 +1,24 @@
 ﻿@model CheckBoxList.Mvc.Demo.Models.InvestmentViewModel
 
-<div style="margin: 45px 0;">
-    <a class="btn btn-default btn-lg" href="@Url.Action("Example1")">
-        Example 1
-    </a>
-    
-    <a class="btn btn-default btn-lg" href="@Url.Action("Example2")">
-        Example 2
-    </a>
+<div style="margin: 100px 0;">
+    <div style="margin-top: 15px;">
+        <a class="btn btn-default btn-lg" href="@Url.Action("ExampleCheckBoxList")">
+            <b>Example - @Html.Encode("@Html.CheckBoxList()")</b>
+        </a>
+    </div>
+    <div style="margin-top: 15px;">
+        <a class="btn btn-default btn-lg" href="@Url.Action("ExampleCheckBoxListFor")">
+            <b>Example - @Html.Encode("@Html.CheckBoxListFor()")</b>
+        </a>
+    </div>
+    <div style="margin-top: 15px;">
+        <a class="btn btn-default btn-lg" href="@Url.Action("ExampleEnumCheckBoxList")">
+            <b>Example - @Html.Encode("@Html.EnumCheckBoxList()")</b>
+        </a>
+    </div>
+    <div style="margin-top: 15px;">
+        <a class="btn btn-default btn-lg" href="@Url.Action("ExampleEnumCheckBoxListFor")">
+            <b>Example - @Html.Encode("@Html.EnumCheckBoxListFor()")</b>
+        </a>
+    </div>
 </div>

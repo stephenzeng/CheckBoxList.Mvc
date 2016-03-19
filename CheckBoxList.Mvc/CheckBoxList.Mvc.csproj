@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="CheckBoxListItem.cs" />
     <Compile Include="Common\EnumExtensions.cs" />
-    <Compile Include="Html\EnumCheckBoxListExtensions.cs" />
     <Compile Include="Html\CheckBoxListExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

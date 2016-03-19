@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using CheckBoxList.Mvc.Common;
 using CheckBoxList.Mvc.Demo.Models;
@@ -12,16 +14,36 @@ namespace CheckBoxList.Mvc.Demo.Controllers
             return View();
         }
 
-        public ActionResult Example1()
+        public ActionResult ExampleCheckBoxList()
         {
-            var viewModel = new InvestmentViewModel();
-            viewModel.InvestmentOptions.Last().IsChecked = true;
+            var investmentOptions = GetInvestmentOptions();
+            return View(investmentOptions);
+        }
+
+        [HttpPost]
+        public ActionResult ExampleCheckBoxList(IList<CheckBoxListItem> investmentOptions)
+        {
+            if (investmentOptions == null)
+                throw new ArgumentNullException("investmentOptions");
+
+            var selectedOptions = investmentOptions
+                .Where(i => i.IsChecked).Select(i => i.Text);
+
+            ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions);
+
+            return View(investmentOptions);
+        }
+
+        public ActionResult ExampleCheckBoxListFor()
+        {
+            var viewModel = new InvestmentViewModel {InvestmentOptions = GetInvestmentOptions()};
+            viewModel.InvestmentOptions.First().IsChecked = true;
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Example1(InvestmentViewModel viewModel)
+        public ActionResult ExampleCheckBoxListFor(InvestmentViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -34,52 +56,59 @@ namespace CheckBoxList.Mvc.Demo.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Example2()
+        public ActionResult ExampleEnumCheckBoxList()
         {
-            var existingHobbies = new[] {Hobby.ScubaDiving, Hobby.Swimming,};
+            var extremeSports = new List<ExtremeSport>();
+            return View(extremeSports);
+        }
 
-            var viewModel = new HobbyViewModel()
-            {
-                Hobbies = existingHobbies.ToCheckboxListItems().ToList()
-            };
+        [HttpPost]
+        public ActionResult ExampleEnumCheckBoxList(IList<ExtremeSport> extremeSports)
+        {
+            if (extremeSports == null)
+                throw new ArgumentNullException("extremeSports");
+
+            var selectedOptions = extremeSports.Select(e => e.GetEnumDisplayName());
+            ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions);
+
+            return View(extremeSports);
+        }
+
+        public ActionResult ExampleEnumCheckBoxListFor()
+        {
+            var viewModel = new ExtremeSportViewModel();
+            viewModel.ExtremeSports.Add(ExtremeSport.RockClimbing);
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Example2(HobbyViewModel viewModel)
+        public ActionResult ExampleEnumCheckBoxListFor(ExtremeSportViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var selectedOptions = viewModel.Hobbies.ToEnumArray<Hobby>();
-
-                ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions.Select(i => i.GetEnumDisplayName()));
+                var selectedOptions = viewModel.ExtremeSports.Select(e => e.GetEnumDisplayName());
+                ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions);
             }
 
             return View(viewModel);
         }
 
-        public ActionResult Example3()
+        private IList<CheckBoxListItem> GetInvestmentOptions()
         {
-            var viewModel = new HobbyViewModel()
+            return new[]
             {
-                MyHobbies = new [] { Hobby.Reading, }.ToList()
-            };
+                "Australian shares",
+                "Australian fixed interest",
+                "Property",
+                "Commodity",
+                "Australian bond",
+                "International shares"
 
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Example3(HobbyViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var selectedOptions = viewModel.MyHobbies;
-
-                ViewBag.SelectedOptionsText = string.Join(", ", selectedOptions.Select(i => i.GetEnumDisplayName()));
             }
-
-            return View(viewModel);
-        }
+                .OrderBy(i => i)
+                .Select(i => new CheckBoxListItem() {Text = i, Value = i})
+                .ToList();
+        } 
     }
 }

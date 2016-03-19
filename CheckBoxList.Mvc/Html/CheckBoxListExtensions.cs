@@ -82,13 +82,13 @@ namespace CheckBoxList.Mvc.Html
         }
 
         public static MvcHtmlString EnumCheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
-            where TProperty : IEnumerable<CheckBoxListItem>
+            where TProperty : IEnumerable
         {
             return EnumCheckBoxListFor(htmlHelper, expression, null);
         }
 
         public static MvcHtmlString EnumCheckBoxListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
-            where TProperty : IEnumerable<CheckBoxListItem>
+            where TProperty : IEnumerable
         {
             return EnumCheckBoxListFor(htmlHelper, expression, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }

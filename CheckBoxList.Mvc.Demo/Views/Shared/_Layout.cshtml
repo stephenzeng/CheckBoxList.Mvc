@@ -8,25 +8,30 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-    <body>
-        <div style="background: #f4f4f4; padding: 30px 0; border-bottom: 1px solid #ddd;">
-            <div class="container">
-                <h1><b>CheckBoxList.Mvc</b></h1>
-                <h4>Extension methods for CheckBoxList in ASP.NET MVC</h4>
-            </div>
+<body>
+    <div style="background: #f4f4f4; padding: 30px 0; border-bottom: 1px solid #ddd;">
+        <div class="container">
+            <h1>
+                <b>
+                    <a href="@Url.Action("Index","Home")" style="color: #000;">CheckBoxList.Mvc</a>
+                </b>
+            </h1>
+            <h3>Extension methods for CheckBoxList in ASP.NET MVC</h3>
+            <h4>@Html.Encode("@Html.CheckBoxList(), @Html.CheckBoxListFor(), @Html.EnumCheckBoxList(), @Html.EnumCheckBoxListFor()")</h4>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            
-            <div style="margin-top: 65px; padding-top: 15px; border-top: 1px solid #ddd;">
-                <p>
-                    <i class="glyphicon glyphicon-paperclip"></i>
-                    CheckBoxList.Mvc.Demo | zeng.stephen@gmail.com
-                </p>
-            </div>
-        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
 
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-    </body>
+        <div style="margin-top: 65px; padding-top: 15px; border-top: 1px solid #ddd;">
+            <p>
+                <i class="glyphicon glyphicon-paperclip"></i>
+                CheckBoxList.Mvc.Demo | zeng.stephen@gmail.com
+            </p>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
 </html>

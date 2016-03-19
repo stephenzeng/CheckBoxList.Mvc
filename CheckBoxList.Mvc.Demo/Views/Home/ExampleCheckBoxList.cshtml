@@ -1,21 +1,21 @@
 ﻿@using System.Web.Mvc.Html
 @using CheckBoxList.Mvc.Html
-@model CheckBoxList.Mvc.Demo.Models.InvestmentViewModel
+@model IList<CheckBoxList.Mvc.CheckBoxListItem>
 
 @{
     Layout = "~/Views/Shared/_ExampleLayout.cshtml";
 }
 
 <h3 class="page-header">
-    <b>Example 1</b>
+    <b>Example - @Html.Encode("@Html.CheckBoxList()")</b>
 </h3>
 
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.InvestmentOptions)
+        <label>Please choose your investment preferences listed below.</label>
         <div style="margin-top: 15px;">
-            @Html.CheckBoxListFor(m => m.InvestmentOptions)
+            @Html.CheckBoxList("InvestmentOptions", Model)
         </div>
     </div>
 
