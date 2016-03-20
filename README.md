@@ -35,7 +35,7 @@ The demo project contains 4 simple examples of using the 4 extension methods whi
 Support for Enum list
 ---------------------
 
-It can be quite handy to use a list of enum types in your models, since the type itself already has all the available options, so that what contained in the model list is what options selected. `EnumCheckBoxList()` and `EnumCheckBoxListFor()` are for this purpose.
+It can be quite handy to use a list of enum types in your models for multiple choices, since the type itself already has all the available options, so that what contained in the model list is what options selected. `EnumCheckBoxList()` and `EnumCheckBoxListFor()` are for this purpose.
 
 ######Enum
 ```c#
