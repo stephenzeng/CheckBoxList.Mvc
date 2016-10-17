@@ -154,10 +154,12 @@ namespace CheckBoxList.Mvc.Html
 
                 var sb = new StringBuilder();
                 sb.AppendLine("<div>");
+                sb.AppendLine("<label>");
                 sb.AppendLine(checkbox.ToHtmlString());
-                sb.AppendLine(text.ToHtmlString());
-                sb.AppendLine(value.ToHtmlString());
                 sb.AppendLine(HttpUtility.HtmlEncode(item.Text));
+                sb.AppendLine("</label>");
+                sb.AppendLine(text.ToHtmlString());
+                sb.AppendLine(value.ToHtmlString());                
                 sb.AppendLine("</div>");
 
                 listItemBuilder.AppendLine(sb.ToString());
