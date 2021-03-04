@@ -1,7 +1,7 @@
 CheckBoxList.Mvc
 ================
 
-#####Extension methods for CheckBoxList in MVC
+###### Extension methods for CheckBoxList in MVC
 
 Overview
 --------
@@ -37,7 +37,7 @@ Support for Enum list
 
 It can be quite handy to use a list of enum types in your models for multiple choices, since the type itself already has all the available options, so that what contained in the model list is what options selected. `EnumCheckBoxList()` and `EnumCheckBoxListFor()` are for this purpose.
 
-######Enum
+###### Enum
 ```c#
 public enum ExtremeSport
 {
@@ -53,7 +53,7 @@ public enum ExtremeSport
 }
 ```
 
-######ViewModel
+###### ViewModel
 ```c#
 public class ExtremeSportViewModel
 {
@@ -67,7 +67,7 @@ public class ExtremeSportViewModel
 }
 ```
 
-######Controller actions
+###### Controller actions
 ```#
 public ActionResult ExampleEnumCheckBoxListFor()
 {
@@ -90,7 +90,7 @@ public ActionResult ExampleEnumCheckBoxListFor(ExtremeSportViewModel viewModel)
 }
 ```
 
-######View
+###### View
 ```
 @using (Html.BeginForm())
 {
